@@ -1,290 +1,345 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  FaSearch,
-  FaBook,
-  FaFilePdf,
-  FaClipboardList,
-  FaUserGraduate,
-  FaSignOutAlt,
-} from "react-icons/fa";
-import { MdDashboard, MdSchool, MdAssignment } from "react-icons/md";
+import { MdSchool, MdQuiz, MdBarChart, MdHistory, MdPerson } from "react-icons/md";
+import { FaChartLine, FaChartPie } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Home = () => {
-  const [user, setUser] = useState(null);
-  const [subjects, setSubjects] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState(null);
-  const navigate = useNavigate();
+  // Sample user data
+  const user = {
+    name: "Abdellatif Feghouli",
+    studentId: "446110",
+    email: "a.feghouli@example.edu",
+    department: "Computer Science",
+    level: "Senior",
+    joinDate: "September 2020",
+  };
 
-  // Mock data - replace with actual API calls
-  useEffect(() => {
-    // Simulate user authentication and data fetching
-    const mockUser = {
-      name: "Abdellatif Feghouli",
-      path: "Scientific",
-      specialization: "Not Yet",
-      year: "First Common Year",
-      studentId: "446110",
-    };
+  // Sample recently added items
+  const recentlyAdded = [
+    { id: 1, title: "Calculus II Quiz", subject: "Mathematics", date: "2 days ago" },
+    { id: 2, title: "Data Structures Exam", subject: "Computer Science", date: "5 days ago" },
+    { id: 3, title: "Physics Midterm", subject: "Physics", date: "1 week ago" },
+  ];
 
-    const mockSubjects = [
-      {
-        id: 1,
-        name: "Advanced Mathematics",
-        code: "MATH202",
-        resources: {
-          exams: 12,
-          documents: 24,
-          homeworks: 8,
-        },
-      },
-      {
-        id: 2,
-        name: "Electrical Circuits",
-        code: "ELEC201",
-        resources: {
-          exams: 8,
-          documents: 15,
-          homeworks: 5,
-        },
-      },
-      {
-        id: 3,
-        name: "Physics for Engineers",
-        code: "PHYS203",
-        resources: {
-          exams: 10,
-          documents: 18,
-          homeworks: 6,
-        },
-      },
-      {
-        id: 4,
-        name: "Programming Fundamentals",
-        code: "COMP204",
-        resources: {
-          exams: 7,
-          documents: 22,
-          homeworks: 9,
-        },
-      },
-    ];
+  // Sample last consulted
+  const lastConsulted = [
+    { id: 1, title: "Linear Algebra Quiz", subject: "Mathematics", date: "Yesterday" },
+    { id: 2, title: "Algorithms Test", subject: "Computer Science", date: "3 days ago" },
+  ];
 
-    setUser(mockUser);
-    setSubjects(mockSubjects);
-  }, []);
+  // Sample suggested quizzes
+  const suggestedQuizzes = [
+    { id: 1, title: "Discrete Math Final", subject: "Mathematics", questions: 20, duration: "30 min" },
+    { id: 2, title: "Database Systems Quiz", subject: "Computer Science", questions: 15, duration: "20 min" },
+    { id: 3, title: "Operating Systems Test", subject: "Computer Science", questions: 25, duration: "45 min" },
+  ];
 
-  const filteredSubjects = subjects.filter(
-    (subject) =>
-      subject.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      subject.code.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const handleLogout = () => {
-    // Implement logout logic
-    navigate("/login");
+  // Sample performance data
+  const performanceData = {
+    scores: [65, 59, 80, 81, 56, 55, 40],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    subjects: ["Math", "Physics", "CS", "English"],
+    subjectScores: [85, 72, 90, 65],
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <div className="flex items-center">
-                <MdSchool className="h-8 w-8 text-[#0084bd]" />
-                <span className="ml-2 text-xl font-bold text-gray-900">
-                  Miras
-                </span>
-              </div>
-            </div>
-            <nav className="hidden md:ml-10 md:flex space-x-8">
-              <a
-                href="#"
-                className="text-[#0084bd] font-medium border-b-2 border-[#0084bd] inline-flex items-center px-1 pt-1"
-              >
-                <MdDashboard className="mr-2" /> Dashboard
-              </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1"
-              >
-                <FaBook className="mr-2" /> Resources
-              </a>
-              <a
-                href="#"
-                className="text-gray-500 hover:text-gray-700 inline-flex items-center px-1 pt-1"
-              >
-                <MdAssignment className="mr-2" /> My Submissions
-              </a>
-            </nav>
+            <MdSchool className="h-8 w-8 text-primary" />
+            <span className="ml-2 text-xl font-bold text-primary">Miras</span>
           </div>
-          <div className="flex items-center">
-            <div className="mr-4 hidden md:block">
-              <div className="text-sm font-medium text-gray-700">
-                {user?.name}
-              </div>
-              <div className="text-xs text-gray-500">
-                {user?.specialization}
-              </div>
-            </div>
-            <button
-              onClick={handleLogout}
-              className="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-[#0084bd] hover:bg-blue-50 focus:outline-none"
-            >
-              <FaSignOutAlt className="mr-1" /> Logout
+          <div className="flex items-center space-x-4">
+            <button className="p-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200">
+              <MdPerson className="h-6 w-6" />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Welcome Section */}
-        <div className="mb-8 bg-white p-6 rounded-lg shadow-sm">
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Welcome back, {user?.name}!
-          </h1>
-          <p className="text-gray-600 mb-4">
-            Access quality resources for your {user?.specialization} courses.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <div className="px-4 py-2 bg-blue-50 rounded-lg">
-              <p className="text-xs text-gray-500">Path</p>
-              <p className="font-medium text-[#0084bd]">{user?.path}</p>
-            </div>
-            <div className="px-4 py-2 bg-blue-50 rounded-lg">
-              <p className="text-xs text-gray-500">Specialization</p>
-              <p className="font-medium text-[#0084bd]">
-                {user?.specialization}
-              </p>
-            </div>
-            <div className="px-4 py-2 bg-blue-50 rounded-lg">
-              <p className="text-xs text-gray-500">Academic Year</p>
-              <p className="font-medium text-[#0084bd]">{user?.year}</p>
-            </div>
-            <div className="px-4 py-2 bg-blue-50 rounded-lg">
-              <p className="text-xs text-gray-500">Student ID</p>
-              <p className="font-medium text-[#0084bd]">{user?.studentId}</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Search and Filter */}
-        <div className="mb-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <div className="relative w-full md:w-96">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <FaSearch className="text-gray-400" />
-            </div>
-            <input
-              type="text"
-              className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#0084bd] focus:border-[#0084bd] sm:text-sm"
-              placeholder="Search subjects..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-          <div className="flex space-x-2">
-            <button className="px-4 py-2 border border-[#0084bd] text-[#0084bd] rounded-md hover:bg-[#0084bd] hover:text-white transition">
-              All Subjects
-            </button>
-            <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition">
-              Current Semester
-            </button>
-          </div>
-        </div>
-
-        {/* Subjects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSubjects.map((subject) => (
-            <div
-              key={subject.id}
-              className={`bg-white rounded-lg shadow-sm overflow-hidden border-l-4 ${
-                selectedSubject === subject.id
-                  ? "border-[#0084bd]"
-                  : "border-transparent"
-              } hover:border-[#0084bd] transition`}
-              onClick={() => setSelectedSubject(subject.id)}
-            >
-              <div className="p-6">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h3 className="text-lg font-medium text-gray-900">
-                      {subject.name}
-                    </h3>
-                    <p className="text-sm text-gray-500">{subject.code}</p>
-                  </div>
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-[#0084bd]">
-                    Active
-                  </span>
-                </div>
-                <div className="mt-6 grid grid-cols-3 gap-4 text-center">
-                  <div>
-                    <div className="text-sm font-medium text-gray-500 flex items-center justify-center">
-                      <FaFilePdf className="mr-1" /> Exams
-                    </div>
-                    <div className="mt-1 text-lg font-semibold text-[#0084bd]">
-                      {subject.resources.exams}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-gray-500 flex items-center justify-center">
-                      <FaBook className="mr-1" /> Documents
-                    </div>
-                    <div className="mt-1 text-lg font-semibold text-[#0084bd]">
-                      {subject.resources.documents}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium text-gray-500 flex items-center justify-center">
-                      <FaClipboardList className="mr-1" /> Homeworks
-                    </div>
-                    <div className="mt-1 text-lg font-semibold text-[#0084bd]">
-                      {subject.resources.homeworks}
-                    </div>
-                  </div>
-                </div>
-                <button className="mt-6 w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#0084bd] hover:bg-[#006a9b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#0084bd] transition">
-                  View Resources
-                </button>
+      <main className="container mx-auto px-4 py-8">
+        {/* User Info Section */}
+        <section className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="bg-white rounded-xl shadow-md p-6"
+          >
+            <h2 className="text-2xl font-bold mb-6 text-primary">User Information</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+                <h3 className="text-sm font-medium text-gray-500">Full Name</h3>
+                <p className="text-lg font-semibold text-gray-800">{user.name}</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+                <h3 className="text-sm font-medium text-gray-500">Student ID</h3>
+                <p className="text-lg font-semibold text-gray-800">{user.studentId}</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+                <h3 className="text-sm font-medium text-gray-500">Email</h3>
+                <p className="text-lg font-semibold text-gray-800">{user.email}</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+                <h3 className="text-sm font-medium text-gray-500">Department</h3>
+                <p className="text-lg font-semibold text-gray-800">{user.department}</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+                <h3 className="text-sm font-medium text-gray-500">Level</h3>
+                <p className="text-lg font-semibold text-gray-800">{user.level}</p>
+              </div>
+              <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+                <h3 className="text-sm font-medium text-gray-500">Join Date</h3>
+                <p className="text-lg font-semibold text-gray-800">{user.joinDate}</p>
               </div>
             </div>
-          ))}
-        </div>
+          </motion.div>
+        </section>
 
-        {/* Empty State */}
-        {filteredSubjects.length === 0 && (
-          <div className="text-center py-12">
-            <FaUserGraduate className="mx-auto h-12 w-12 text-gray-400" />
-            <h3 className="mt-2 text-lg font-medium text-gray-900">
-              No subjects found
-            </h3>
-            <p className="mt-1 text-sm text-gray-500">
-              {searchTerm
-                ? "Try a different search term"
-                : "No subjects available for your current path"}
-            </p>
-          </div>
-        )}
+        {/* Stats Overview */}
+        <section className="mb-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-xl shadow-md p-6 flex items-center"
+          >
+            <div className="p-3 rounded-full bg-primary bg-opacity-10 text-primary mr-4">
+              <MdQuiz className="h-6 w-6" />
+            </div>
+            <div>
+              <h3 className="text-sm font-medium text-gray-500">Quizzes Taken</h3>
+              <p className="text-2xl font-bold text-gray-800">24</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-xl shadow-md p-6 flex items-center"
+          >
+            <div className="p-3 rounded-full bg-secondary bg-opacity-10 text-secondary mr-4">
+              <FaChartLine className="h-6 w-6" />
+            </div>
+            <div>
+              <h3 className="text-sm font-medium text-gray-500">Average Score</h3>
+              <p className="text-2xl font-bold text-gray-800">78%</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-xl shadow-md p-6 flex items-center"
+          >
+            <div className="p-3 rounded-full bg-primary bg-opacity-10 text-primary mr-4">
+              <MdHistory className="h-6 w-6" />
+            </div>
+            <div>
+              <h3 className="text-sm font-medium text-gray-500">Active Streak</h3>
+              <p className="text-2xl font-bold text-gray-800">7 days</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            whileHover={{ y: -5 }}
+            className="bg-white rounded-xl shadow-md p-6 flex items-center"
+          >
+            <div className="p-3 rounded-full bg-secondary bg-opacity-10 text-secondary mr-4">
+              <MdBarChart className="h-6 w-6" />
+            </div>
+            <div>
+              <h3 className="text-sm font-medium text-gray-500">Rank</h3>
+              <p className="text-2xl font-bold text-gray-800">Top 15%</p>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Recently Added Section */}
+        <section className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="bg-white rounded-xl shadow-md p-6"
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold text-primary">Recently Added</h2>
+              <button className="text-secondary hover:underline">View All</button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {recentlyAdded.map((item) => (
+                <motion.div
+                  key={item.id}
+                  whileHover={{ y: -5 }}
+                  className="border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-center mb-3">
+                    <div className="p-2 rounded-full bg-primary bg-opacity-10 text-primary mr-3">
+                      <MdQuiz className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  </div>
+                  <p className="text-gray-600 mb-2">{item.subject}</p>
+                  <p className="text-sm text-gray-500">{item.date}</p>
+                  <button className="mt-4 px-4 py-2 bg-primary bg-opacity-10 text-primary rounded-lg hover:bg-opacity-20 transition">
+                    Start Quiz
+                  </button>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Last Consulted Section */}
+        <section className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="bg-white rounded-xl shadow-md p-6"
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold text-primary">Last Consulted</h2>
+              <button className="text-secondary hover:underline">View All</button>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {lastConsulted.map((item) => (
+                <motion.div
+                  key={item.id}
+                  whileHover={{ y: -5 }}
+                  className="border border-gray-200 rounded-lg p-5 hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-center mb-3">
+                    <div className="p-2 rounded-full bg-secondary bg-opacity-10 text-secondary mr-3">
+                      <MdHistory className="h-5 w-5" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800">{item.title}</h3>
+                  </div>
+                  <p className="text-gray-600 mb-2">{item.subject}</p>
+                  <p className="text-sm text-gray-500">{item.date}</p>
+                  <div className="mt-4 flex space-x-3">
+                    <button className="px-4 py-2 bg-primary bg-opacity-10 text-primary rounded-lg hover:bg-opacity-20 transition">
+                      Review
+                    </button>
+                    <button className="px-4 py-2 bg-secondary bg-opacity-10 text-secondary rounded-lg hover:bg-opacity-20 transition">
+                      Retake
+                    </button>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Suggested Quiz Section */}
+        <section className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="bg-white rounded-xl shadow-md p-6"
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-2xl font-bold text-primary">Suggested Quizzes</h2>
+              <button className="text-secondary hover:underline">View All</button>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Quiz
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Subject
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Questions
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Duration
+                    </th>
+                    <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Action
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {suggestedQuizzes.map((quiz) => (
+                    <tr key={quiz.id} className="hover:bg-gray-50">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        {quiz.title}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {quiz.subject}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {quiz.questions}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {quiz.duration}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        <button className="text-primary hover:text-opacity-80">
+                          Start Now
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Performance Graphs */}
+        <section className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="bg-white rounded-xl shadow-md p-6"
+          >
+            <h2 className="text-2xl font-bold mb-6 text-primary">Your Performance</h2>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              {/* Line Chart (Placeholder) */}
+              <div className="border border-gray-200 rounded-lg p-6">
+                <div className="flex items-center mb-4">
+                  <FaChartLine className="h-5 w-5 text-secondary mr-2" />
+                  <h3 className="text-lg font-semibold text-gray-800">Progress Over Time</h3>
+                </div>
+                <div className="h-64 bg-gray-50 rounded flex items-center justify-center text-gray-400">
+                  [Line Chart: Scores over months]
+                  <div className="hidden">
+                    {/* This would be replaced with an actual chart library */}
+                    {performanceData.scores.join(",")}
+                    {performanceData.labels.join(",")}
+                  </div>
+                </div>
+              </div>
+
+              {/* Pie Chart (Placeholder) */}
+              <div className="border border-gray-200 rounded-lg p-6">
+                <div className="flex items-center mb-4">
+                  <FaChartPie className="h-5 w-5 text-primary mr-2" />
+                  <h3 className="text-lg font-semibold text-gray-800">Performance by Subject</h3>
+                </div>
+                <div className="h-64 bg-gray-50 rounded flex items-center justify-center text-gray-400">
+                  [Pie Chart: Subject performance]
+                  <div className="hidden">
+                    {/* This would be replaced with an actual chart library */}
+                    {performanceData.subjects.join(",")}
+                    {performanceData.subjectScores.join(",")}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 mt-12">
-        <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center">
-              <MdSchool className="h-6 w-6 text-[#0084bd]" />
-              <span className="ml-2 text-lg font-bold text-gray-900">
-                Miras
-              </span>
-            </div>
-            <p className="mt-4 md:mt-0 text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} King Saud University. All rights
-              reserved.
-            </p>
-          </div>
+      <footer className="bg-white py-6 border-t border-gray-200">
+        <div className="container mx-auto px-4 text-center text-gray-600">
+          <p>© {new Date().getFullYear()} Miras University. All rights reserved.</p>
         </div>
       </footer>
     </div>

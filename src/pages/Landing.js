@@ -79,7 +79,7 @@ const Landing = () => {
             <div className="mt-8 flex justify-center gap-4">
               <button
                 onClick={() => navigate("/login")}
-                className="px-8 py-3 bg-white text-identity font-medium rounded-md shadow hover:bg-gray-100 transition"
+                className="px-8 py-3 bg-white text-primary font-medium rounded-md shadow hover:bg-gray-100 transition"
               >
                 Get Started
               </button>
@@ -95,7 +95,7 @@ const Landing = () => {
       <div className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
-            <h2 className="text-base text-identity font-semibold tracking-wide uppercase">
+            <h2 className="text-base text-primary font-semibold tracking-wide uppercase">
               Features
             </h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -111,27 +111,27 @@ const Landing = () => {
             <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 {
-                  icon: <FaBookOpen className="text-identity text-4xl" />,
+                  icon: <FaBookOpen className="text-primary text-4xl" />,
                   title: "Course Materials",
                   description:
                     "Access lecture notes, slides, and reading materials for all your courses.",
                 },
                 {
-                  icon: <FaLaptopCode className="text-identity text-4xl" />,
+                  icon: <FaLaptopCode className="text-primary text-4xl" />,
                   title: "Practice Exams",
                   description:
                     "Prepare with past exams and quizzes to test your knowledge.",
                 },
                 {
                   icon: (
-                    <FaChalkboardTeacher className="text-identity text-4xl" />
+                    <FaChalkboardTeacher className="text-primary text-4xl" />
                   ),
                   title: "Expert Tutors",
                   description:
                     "Connect with experienced tutors for personalized help.",
                 },
                 {
-                  icon: <FaUserGraduate className="text-identity text-4xl" />,
+                  icon: <FaUserGraduate className="text-primary text-4xl" />,
                   title: "Peer Network",
                   description:
                     "Collaborate with fellow students in study groups.",
@@ -165,7 +165,7 @@ const Landing = () => {
       <div className="py-16 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
-            <h2 className="text-base text-identity font-semibold tracking-wide uppercase">
+            <h2 className="text-base text-primary font-semibold tracking-wide uppercase">
               Specializations
             </h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -176,29 +176,29 @@ const Landing = () => {
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: <MdOutlineScience className="text-identity text-4xl" />,
+                icon: <MdOutlineScience className="text-primary text-4xl" />,
                 title: "Natural Sciences",
                 count: "24 courses",
               },
               {
-                icon: <MdComputer className="text-identity text-4xl" />,
+                icon: <MdComputer className="text-primary text-4xl" />,
                 title: "Computer Science",
                 count: "18 courses",
               },
               {
-                icon: <MdEngineering className="text-identity text-4xl" />,
+                icon: <MdEngineering className="text-primary text-4xl" />,
                 title: "Engineering",
                 count: "32 courses",
               },
               {
-                icon: <FaMicroscope className="text-identity text-4xl" />,
+                icon: <FaMicroscope className="text-primary text-4xl" />,
                 title: "Health Sciences",
                 count: "15 courses",
               },
             ].map((specialization, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-identity"
+                className="bg-white p-6 rounded-lg shadow-sm border-l-4 border-primary"
               >
                 <div className="flex items-center">
                   <div className="flex-shrink-0">{specialization.icon}</div>
@@ -218,8 +218,8 @@ const Landing = () => {
       </div>
 
       {/* Stats Section */}
-      <div className="relative bg-identity">
-        <div className="h-56 bg-identity sm:h-72 md:h-96 lg:absolute lg:left-0 lg:h-full lg:w-1/2">
+      <div className="relative bg-primary">
+        <div className="h-56 bg-primary sm:h-72 md:h-96 lg:absolute lg:left-0 lg:h-full lg:w-1/2">
           <img
             className="w-full h-full object-cover"
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80"
@@ -261,7 +261,7 @@ const Landing = () => {
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
-            <h2 className="text-base text-identity font-semibold tracking-wide uppercase">
+            <h2 className="text-base text-primary font-semibold tracking-wide uppercase">
               Testimonials
             </h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -296,7 +296,7 @@ const Landing = () => {
                 >
                   <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
                     <div className="-mt-6">
-                      <div className="flex items-center justify-center h-12 w-12 rounded-md bg-identity text-white mx-auto">
+                      <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
                         <FaQuoteLeft className="h-6 w-6" />
                       </div>
                       <blockquote className="mt-8">
@@ -330,7 +330,7 @@ const Landing = () => {
         <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
           <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
             <span className="block">Ready to dive in?</span>
-            <span className="block text-identity">
+            <span className="block text-primary">
               Start your free account today.
             </span>
           </h2>
@@ -338,7 +338,7 @@ const Landing = () => {
             <div className="inline-flex rounded-md shadow">
               <button
                 onClick={() => navigate("/register")}
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-identity hover:bg-[#006a9b] transition"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-[#006a9b] transition"
               >
                 Get started
               </button>
@@ -346,7 +346,7 @@ const Landing = () => {
             <div className="ml-3 inline-flex rounded-md shadow">
               <button
                 onClick={() => navigate("/login")}
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-identity bg-white hover:bg-gray-50 transition"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 transition"
               >
                 Sign in
               </button>
@@ -541,7 +541,7 @@ const Landing = () => {
                     type="email"
                     autoComplete="email"
                     required
-                    className="w-full px-5 py-3 placeholder-gray-500 focus:ring-2 focus:ring-identity focus:border-identity sm:max-w-xs border-gray-300 rounded-md"
+                    className="w-full px-5 py-3 placeholder-gray-500 focus:ring-2 focus:ring-primary focus:border-primary sm:max-w-xs border-gray-300 rounded-md"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -549,7 +549,7 @@ const Landing = () => {
                   <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-identity hover:bg-[#006a9b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-identity transition"
+                      className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-[#006a9b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition"
                     >
                       Subscribe
                     </button>

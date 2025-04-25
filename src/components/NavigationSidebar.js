@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
-  FaHandshake,
   FaHome,
-  FaTruck,
   FaBoxes,
   FaFileAlt,
   FaBell,
@@ -13,41 +11,62 @@ import {
   FaUserGraduate,
 } from "react-icons/fa";
 import { MdSchool } from "react-icons/md";
+import { IoClose } from "react-icons/io5";
 
 const NavigationSidebar = ({ activeTab, setActiveTab }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const user = useState("Abdellatif Feghouli");
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
+  const user = {
+    displayName: "Abdellatif Feghouli",
+    email: "abdellatif@example.com",
+    userType: "Student",
   };
+
+  const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const navItems = [
     {
-      name: "dashboard",
-      path: "/dashboard",
-      label: "Dashboard",
-      icon: <FaHome />,
+      name: "home",
+      path: "/home",
+      label: "Home",
+      icon: <FaHome className="text-lg" />,
     },
     {
       name: "ressources",
-      path: "/dashboard",
-      label: "Ressources",
-      icon: <FaBoxes />,
+      path: "/ressources",
+      label: "Resources",
+      icon: <FaBoxes className="text-lg" />,
     },
     {
-      name: "Quiz",
+      name: "quiz",
       path: "/quiz",
       label: "Quiz",
-      icon: <FaFileAlt />,
+      icon: <FaFileAlt className="text-lg" />,
     },
     {
       name: "notifications",
       path: "/notifications",
       label: "Notifications",
-      icon: <FaBell />,
-      badge: 3, // You can dynamically set this value
+      icon: <FaBell className="text-lg" />,
+      badge: 3,
     },
+    {
+      name: "profile",
+      path: "/profile",
+        label: "Profile",
+        icon: <FaUserGraduate className="text-lg" />,
+    }
   ];
 
   const settingsItems = [
@@ -55,187 +74,168 @@ const NavigationSidebar = ({ activeTab, setActiveTab }) => {
       name: "settings",
       path: "/settings",
       label: "Settings",
-      icon: <FaCog />,
+      icon: <FaCog className="text-lg" />,
     },
     {
       name: "help",
       path: "/help",
       label: "Help Center",
-      icon: <FaQuestionCircle />,
+      icon: <FaQuestionCircle className="text-lg" />,
     },
   ];
 
   return (
-    <div className="relative">
-      {/* Mobile Header - Fixed at the top */}
-      <header className="md:hidden fixed top-0 left-0 right-0 bg-white shadow-sm p-4 flex justify-between items-center z-30">
-        <button
-          onClick={toggleMobileMenu}
-          className="text-darkOcean"
-        >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </button>
-        <h1 className="text-xl font-bold text-darkOcean">LogiBridge</h1>
-        <div className="relative">
-          <MdSchool className="text-identity text-xl" />
-          <span className="absolute -top-1 -right-1 bg-background text-white text-xs rounded-full h-4 w-4 flex items-center justify-center">
-            3
-          </span>
-        </div>
-      </header>
-
-      {/* Sidebar - Positioned below the mobile header */}
-      <aside
-        className={`${
-          mobileMenuOpen ? "block" : "hidden"
-        } md:block fixed md:static inset-0 md:inset-auto md:left-0 mt-16 md:mt-0 w-full md:w-64 bg-white shadow-md z-20 overflow-y-auto`}
+    <>
+      {/* Mobile Toggle Button */}
+      <button
+        className="fixed top-4 left-4 z-40 md:hidden bg-secondary p-2 rounded-lg text-white shadow-md"
+        onClick={toggleMobileMenu}
       >
-        <div className="p-4 border-b border-gray-100">
-          <div className="flex items-center justify-between">
+        <svg
+          className="w-6 h-6"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d={
+              mobileMenuOpen
+                ? "M6 18L18 6M6 6l12 12"
+                : "M4 6h16M4 12h16M4 18h16"
+            }
+          />
+        </svg>
+      </button>
+
+      {/* Overlay */}
+      {mobileMenuOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-30 md:hidden"
+          onClick={toggleMobileMenu}
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`fixed top-0 left-0 z-40 h-screen w-full max-w-xs md:max-w-xs md:w-64 bg-white text-gray-800 transition-transform duration-300 transform ${
+          mobileMenuOpen ? "translate-x-0" : "-translate-x-full"
+        } md:translate-x-0 md:static md:z-0 shadow-lg border-r border-gray-200`}
+      >
+        <div className="flex flex-col h-full">
+          {/* Header */}
+          <div className="p-5 flex items-center justify-between gap-3 border-b border-gray-200">
             <Link
               to="/dashboard"
-              className="flex items-center space-x-2"
+              className="flex items-center gap-3"
               onClick={() => setMobileMenuOpen(false)}
             >
-              <div className="bg-gradient-to-r from-crimsonRed to-goldenYellow p-2 rounded-lg">
-                <MdSchool className="text-white text-xl" />
+              <div className="p-2 rounded-lg bg-secondary text-white">
+                <MdSchool className="text-xl" />
               </div>
-              <span className="text-xl font-bold text-darkOcean">
-                LogiBridge
-              </span>
+              <span className="text-xl font-bold tracking-wide">Miras</span>
             </Link>
-            <button
-              className="md:hidden text-darkOcean"
-              onClick={toggleMobileMenu}
-            >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="flex md:hidden justify-end">
+              <button
+                onClick={toggleMobileMenu}
+                className="text-gray-500 hover:text-gray-800"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                ></path>
-              </svg>
-            </button>
+                <IoClose className="text-2xl" />
+              </button>
+            </div>
           </div>
-        </div>
 
-        <nav className="p-4">
-          <ul className="space-y-2">
-            {navItems.map((item) => (
-              <li key={item.path}>
-                <Link
-                  to={item.path}
-                  onClick={() => {
-                    setActiveTab(item.name);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`flex items-center gap-3 p-3 rounded-lg transition ${
-                    activeTab === item.name
-                      ? "bg-skyBlue/10 text-darkOcean font-medium"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
-                >
-                  <span
-                    className={`text-lg ${
-                      activeTab === item.name ? "text-skyBlue" : "text-gray-500"
-                    }`}
-                  >
-                    {item.icon}
-                  </span>
-                  <span>{item.label}</span>
-                  {item.badge && (
-                    <span className="ml-auto bg-crimsonRed text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                      {item.badge}
-                    </span>
-                  )}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* Settings Section */}
-          <div className="mt-8">
-            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider px-3 mb-2">
-              Settings
-            </h3>
-            <ul className="space-y-2">
-              {settingsItems.map((item) => (
-                <li key={item.path}>
-                  <Link
-                    to={item.path}
-                    onClick={() => {
-                      setActiveTab(item.name);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`flex items-center gap-3 p-3 rounded-lg transition ${
-                      activeTab === item.name
-                        ? "bg-skyBlue/10 text-darkOcean font-medium"
-                        : "text-gray-600 hover:bg-gray-100"
-                    }`}
-                  >
-                    <span
-                      className={`text-lg ${
+          {/* Navigation */}
+          <nav className="flex-1 overflow-y-auto p-5">
+            <div className="mb-8">
+              <h3 className="text-xs uppercase font-semibold text-gray-500 mb-4 tracking-wider">
+                Navigation
+              </h3>
+              <ul className="space-y-2">
+                {navItems.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      to={item.path}
+                      onClick={() => {
+                        setActiveTab(item.name);
+                        setMobileMenuOpen(false);
+                      }}
+                      className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${
                         activeTab === item.name
-                          ? "text-skyBlue"
-                          : "text-gray-500"
+                          ? "bg-secondary/10 text-secondary font-medium border-l-4 border-primary"
+                          : "hover:bg-gray-100"
                       }`}
                     >
-                      {item.icon}
-                    </span>
-                    <span>{item.label}</span>
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <button className="flex items-center gap-3 p-3 rounded-lg transition w-full text-gray-600 hover:bg-gray-100">
-                  <span className="text-lg text-gray-500">
-                    <FaSignOutAlt />
-                  </span>
-                  <span>Logout</span>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </nav>
-
-        {/* User Profile Card */}
-        <div className="p-4 border-t border-gray-100 mt-auto">
-          <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-50">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-crimsonRed to-goldenYellow flex items-center justify-center text-white">
-              {user?.displayName?.charAt(0) || user?.email?.charAt(0) || "U"}
+                      <span>{item.icon}</span>
+                      <span>{item.label}</span>
+                      {item.badge && (
+                        <span className="ml-auto bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                          {item.badge}
+                        </span>
+                      )}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            {/* Settings */}
             <div>
-              <p className="font-medium text-darkOcean">
-                {user?.displayName || user?.email?.split("@")[0] || "User"}
-              </p>
-              <p className="text-xs text-gray-500">
-                {user?.userType === "Transportateur"
-                  ? "Transport Provider"
-                  : "Business Account"}
-              </p>
+              <ul className="space-y-2">
+                {settingsItems.map((item) => (
+                  <li key={item.name}>
+                    <Link
+                      to={item.path}
+                      onClick={() => {
+                        setActiveTab(item.name);
+                        setMobileMenuOpen(false);
+                      }}
+                      className={`flex items-center gap-3 p-3 rounded-lg transition-colors ${
+                        activeTab === item.name
+                          ? "bg-primary/10 text-primary font-medium border-l-4 border-primary"
+                          : "hover:bg-gray-100"
+                      }`}
+                    >
+                      <span>{item.icon}</span>
+                      <span>{item.label}</span>
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                  <button
+                    onClick={() => {
+                      console.log("Logging out...");
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-800"
+                  >
+                    <FaSignOutAlt className="text-lg" />
+                    <span>Logout</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          {/* User Profile */}
+          <div className="p-5 border-t border-gray-200">
+            <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
+              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-secondary text-white font-bold">
+                {user.displayName.charAt(0)}
+              </div>
+              <div>
+                <p className="font-semibold text-gray-800">
+                  {user.displayName}
+                </p>
+                <p className="text-xs text-gray-500">{user.userType}</p>
+              </div>
             </div>
           </div>
         </div>
       </aside>
-    </div>
+    </>
   );
 };
 
