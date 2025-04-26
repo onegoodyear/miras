@@ -37,11 +37,11 @@ const Ressources = () => {
   useEffect(() => {
     // Simulate user authentication and data fetching
     const mockUser = {
-      name: "Abdellatif Feghouli",
+      name: "Khaled Elghamedi",
       path: "Scientific",
       specialization: "Not Yet",
       year: "First Common Year",
-      studentId: "446110",
+      studentId: "44611021",
     };
 
     const mockSubjects = [

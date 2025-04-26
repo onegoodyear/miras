@@ -43,6 +43,7 @@ import {
   PointElement,
   LineElement,
 } from "chart.js";
+import { label } from "framer-motion/client";
 
 ChartJS.register(
   ArcElement,
@@ -98,7 +99,7 @@ const StudentProfile = () => {
     ],
     datasets: [
       {
-        label: "Current Level",
+        label: "Skill Level",
         data: [85, 72, 68, 65, 78, 70],
         backgroundColor: [
           "rgba(0, 132, 189, 0.7)",
@@ -121,7 +122,6 @@ const StudentProfile = () => {
     ],
   };
 
-  // Progress over time data
   const progressData = {
     labels: [
       "Jan",
