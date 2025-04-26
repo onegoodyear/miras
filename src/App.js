@@ -8,6 +8,8 @@ import Quiz from "./pages/Quiz";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Forum from "./pages/Forum";
+import Support from "./pages/Support";
+import NotFound from "./pages/NotFound";
 import MainLayout from "./components/MainLayout";
 
 function App() {
@@ -45,10 +47,18 @@ function App() {
               element={<Profile />}
             />
             <Route
+              path="/support"
+              element={<Support />}
+            />
+            <Route
               path="/forum"
               element={<Forum />}
             />
           </Route>
+          <Route
+            path="*"
+            element={<NotFound />}
+          />
         </Routes>
       </div>
     </Router>

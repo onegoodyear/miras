@@ -14,6 +14,7 @@ import {
   FaRegBookmark,
   FaRegThumbsUp,
   FaThumbsUp,
+  FaCrown,
 } from "react-icons/fa";
 import { MdOutlineTopic, MdOutlineForum, MdClose } from "react-icons/md";
 import { IoMdSend } from "react-icons/io";
@@ -102,6 +103,102 @@ const ForumPage = () => {
       isClosed: false,
       isBookmarked: true,
     },
+    {
+      id: 3,
+      title: "إثراء",
+      author: {
+        name: "نورا أحمد",
+        avatar: "https://randomuser.me/api/portraits/women/22.jpg",
+        score: 320,
+        role: "طالبة علوم حاسب",
+      },
+      content:
+        "أريد أن أشارككم بعض التحديات التي واجهتها في رحلتي لتعلم البرمجة وكيف تخطيتها. ما هي التحديات التي واجهتموها وكيف تعاملتم معها؟",
+      comments: [
+        {
+          id: 1,
+          author: {
+            name: "خالد سعد",
+            avatar: "https://randomuser.me/api/portraits/men/33.jpg",
+            score: 280,
+            role: "مطور ويب",
+          },
+          content:
+            "أكبر تحدي واجهته هو فهم الخوارزميات المعقدة. الحل كان في الممارسة المستمرة وحل المشكلات على منصات مثل LeetCode.",
+          votes: 7,
+          timestamp: "منذ 3 ساعات",
+          isSolution: false,
+        },
+        {
+          id: 2,
+          author: {
+            name: "سارة محمد",
+            avatar: "https://randomuser.me/api/portraits/women/45.jpg",
+            score: 410,
+            role: "مهندسة برمجيات",
+          },
+          content:
+            "التحدي الأكبر كان إدارة الوقت بين الدراسة والعمل. أنصح باستخدام تقنيات مثل Pomodoro وتقسيم المهام إلى أجزاء صغيرة.",
+          votes: 12,
+          timestamp: "منذ ساعة",
+          isSolution: true,
+        },
+      ],
+      votes: 15,
+      views: 120,
+      timestamp: "منذ 6 ساعات",
+      tags: ["برمجة", "تعلم"],
+      isClosed: false,
+      isBookmarked: false,
+    },
+    {
+      id: 4,
+      title: "ريد 101",
+      author: {
+        name: "علي عبدالله",
+        avatar: "https://randomuser.me/api/portraits/men/55.jpg",
+        score: 380,
+        role: "كبير المطورين",
+      },
+      content:
+        "في هذا الموضوع سنناقش أهم المبادئ لكتابة أكواد نظيفة وسهلة الصيانة. ما هي النصائح التي تتبعونها في مشاريعكم؟",
+      comments: [
+        {
+          id: 1,
+          author: {
+            name: "ريم خالد",
+            avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+            score: 290,
+            role: "مطورة تطبيقات",
+          },
+          content:
+            "أهم شيء هو تسمية المتغيرات والدوال بأسماء واضحة تعبر عن الغرض منها. أيضًا تقسيم الكود إلى دوال صغيرة كل منها مسؤولة عن شيء واحد.",
+          votes: 9,
+          timestamp: "منذ يومين",
+          isSolution: false,
+        },
+        {
+          id: 2,
+          author: {
+            name: "ياسر ناصر",
+            avatar: "https://randomuser.me/api/portraits/men/66.jpg",
+            score: 450,
+            role: "مهندس برمجيات",
+          },
+          content:
+            "اتباع مبادئ SOLID واستخدام التعليقات فقط عندما يكون الكود معقدًا حقًا. الكود الجيد يجب أن يشرح نفسه بنفسه.",
+          votes: 15,
+          timestamp: "منذ يوم",
+          isSolution: true,
+        },
+      ],
+      votes: 24,
+      views: 210,
+      timestamp: "منذ 3 أيام",
+      tags: ["برمجة", "أكواد نظيفة"],
+      isClosed: true,
+      isBookmarked: true,
+    },
   ]);
 
   const [selectedTopic, setSelectedTopic] = useState(null);
@@ -113,6 +210,151 @@ const ForumPage = () => {
     content: "",
     tags: [],
   });
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
+
+  // Mock leaderboard data
+  const leaderboard = [
+    {
+      id: 1,
+      name: "ياسر ناصر",
+      score: 450,
+      role: "مهندس برمجيات",
+      avatar: "https://randomuser.me/api/portraits/men/66.jpg",
+    },
+    {
+      id: 2,
+      name: "سارة محمد",
+      score: 410,
+      role: "مهندسة برمجيات",
+      avatar: "https://randomuser.me/api/portraits/women/45.jpg",
+    },
+    {
+      id: 3,
+      name: "Omar Farouk",
+      score: 421,
+      role: "Quantum Researcher",
+      avatar: "https://randomuser.me/api/portraits/men/22.jpg",
+    },
+    {
+      id: 4,
+      name: "علي عبدالله",
+      score: 380,
+      role: "كبير المطورين",
+      avatar: "https://randomuser.me/api/portraits/men/55.jpg",
+    },
+    {
+      id: 5,
+      name: "نورا أحمد",
+      score: 320,
+      role: "طالبة علوم حاسب",
+      avatar: "https://randomuser.me/api/portraits/women/22.jpg",
+    },
+    {
+      id: 6,
+      name: "Abdellatif Feghouli",
+      score: 325,
+      role: "Computer Science Student",
+      avatar: "https://randomuser.me/api/portraits/men/1.jpg",
+    },
+    {
+      id: 7,
+      name: "ريم خالد",
+      score: 290,
+      role: "مطورة تطبيقات",
+      avatar: "https://randomuser.me/api/portraits/women/65.jpg",
+    },
+    {
+      id: 8,
+      name: "خالد سعد",
+      score: 280,
+      role: "مطور ويب",
+      avatar: "https://randomuser.me/api/portraits/men/33.jpg",
+    },
+    {
+      id: 9,
+      name: "Ahmed Khaled",
+      score: 245,
+      role: "Mathematics Tutor",
+      avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    },
+    {
+      id: 10,
+      name: "Sarah Mohammed",
+      score: 312,
+      role: "Math Professor",
+      avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    },
+    {
+      id: 11,
+      name: "Layla Hassan",
+      score: 178,
+      role: "Engineering Student",
+      avatar: "https://randomuser.me/api/portraits/women/63.jpg",
+    },
+    {
+      id: 12,
+      name: "Mohammed Ali",
+      score: 189,
+      role: "Physics Student",
+      avatar: "https://randomuser.me/api/portraits/men/41.jpg",
+    },
+    {
+      id: 13,
+      name: "فاطمة علي",
+      score: 210,
+      role: "مطورة ألعاب",
+      avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+    },
+    {
+      id: 14,
+      name: "أحمد راشد",
+      score: 195,
+      role: "خبير أمن معلومات",
+      avatar: "https://randomuser.me/api/portraits/men/70.jpg",
+    },
+    {
+      id: 15,
+      name: "هناء وليد",
+      score: 230,
+      role: "باحثة ذكاء اصطناعي",
+      avatar: "https://randomuser.me/api/portraits/women/71.jpg",
+    },
+    {
+      id: 16,
+      name: "محمود سليم",
+      score: 260,
+      role: "مهندس بيانات",
+      avatar: "https://randomuser.me/api/portraits/men/72.jpg",
+    },
+    {
+      id: 17,
+      name: "أميرة كمال",
+      score: 240,
+      role: "مصممة واجهات",
+      avatar: "https://randomuser.me/api/portraits/women/73.jpg",
+    },
+    {
+      id: 18,
+      name: "باسل نادر",
+      score: 275,
+      role: "مطور تطبيقات جوال",
+      avatar: "https://randomuser.me/api/portraits/men/74.jpg",
+    },
+    {
+      id: 19,
+      name: "جنى عماد",
+      score: 290,
+      role: "خبيرة تعلم آلي",
+      avatar: "https://randomuser.me/api/portraits/women/75.jpg",
+    },
+    {
+      id: 20,
+      name: "زياد فؤاد",
+      score: 310,
+      role: "مهندس نظم",
+      avatar: "https://randomuser.me/api/portraits/men/76.jpg",
+    },
+  ];
 
   // User data (mock)
   const currentUser = {
@@ -264,14 +506,63 @@ const ForumPage = () => {
         <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex justify-between items-center">
           <div className="flex items-center">
             <MdOutlineForum className="h-8 w-8 text-primary" />
-            <h1 className="ml-2 text-2xl font-bold">Academic Forum</h1>
+            <h1 className="ml-2 text-2xl font-bold">ksu مجتمع</h1>
           </div>
           <div className="flex items-center space-x-4">
-            <div className="flex items-center bg-secondary/10 px-3 py-1 rounded-full">
-              <span className="text-sm font-medium text-secondary mr-1">
-                Score:
-              </span>
-              <span className="font-bold">{currentUser.score}</span>
+            <div className="relative">
+              <button
+                onClick={() => setShowLeaderboard(!showLeaderboard)}
+                className="flex items-center bg-secondary/10 px-3 py-1 rounded-full hover:bg-secondary/20 transition"
+              >
+                <span className="text-sm font-medium text-secondary mr-1">
+                  Score:
+                </span>
+                <span className="font-bold">{currentUser.score}</span>
+              </button>
+
+              {/* Leaderboard Dropdown */}
+              {showLeaderboard && (
+                <div className="absolute right-0 mt-2 w-64 bg-white rounded-lg shadow-xl z-10 border border-gray-200">
+                  <div className="p-3 border-b border-gray-200">
+                    <h3 className="font-bold text-secondary">
+                      قائمة المتصدرين
+                    </h3>
+                  </div>
+                  <div className="max-h-80 overflow-y-auto">
+                    {leaderboard.map((user, index) => (
+                      <div
+                        key={user.id}
+                        className={`p-3 flex items-center justify-between ${
+                          index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                        }`}
+                      >
+                        <div className="flex items-center">
+                          <span className="text-sm font-medium text-gray-500 w-6">
+                            {index + 1}
+                          </span>
+                          <img
+                            src={user.avatar}
+                            alt={user.name}
+                            className="h-8 w-8 rounded-full mx-2"
+                          />
+                          <div>
+                            <p className="text-sm font-medium">{user.name}</p>
+                            <p className="text-xs text-gray-500">{user.role}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          {index === 0 && (
+                            <FaCrown className="text-yellow-400 mr-1" />
+                          )}
+                          <span className="text-sm font-bold text-secondary">
+                            {user.score}
+                          </span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

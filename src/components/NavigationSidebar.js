@@ -9,6 +9,7 @@ import {
   FaQuestionCircle,
   FaSignOutAlt,
   FaUserGraduate,
+  FaHandsHelping,
 } from "react-icons/fa";
 import { MdSchool, MdForum } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
@@ -39,31 +40,37 @@ const NavigationSidebar = ({ activeTab, setActiveTab }) => {
     {
       name: "home",
       path: "/home",
-      label: "Home",
+      label: "الرئيسية",
       icon: <FaHome className="text-lg" />,
     },
     {
       name: "ressources",
       path: "/ressources",
-      label: "Resources",
+      label: "الموارد",
       icon: <FaBoxes className="text-lg" />,
     },
     {
       name: "quiz",
       path: "/quiz",
-      label: "Quiz",
+      label: "الاختبارات",
       icon: <FaFileAlt className="text-lg" />,
     },
     {
       name: "forum",
       path: "/forum",
-      label: "Forum",
+      label: "منتدى",
       icon: <MdForum className="text-lg" />,
+    },
+    {
+      name: "support",
+      path: "/support",
+      label: "دعم",
+      icon: <FaHandsHelping className="text-lg" />, // using FaHandsHelping for support
     },
     {
       name: "profile",
       path: "/profile",
-      label: "Profile",
+      label: "الملف الشخصي",
       icon: <FaUserGraduate className="text-lg" />,
     },
   ];
@@ -72,13 +79,13 @@ const NavigationSidebar = ({ activeTab, setActiveTab }) => {
     {
       name: "settings",
       path: "/settings",
-      label: "Settings",
+      label: "الإعدادات",
       icon: <FaCog className="text-lg" />,
     },
     {
       name: "help",
       path: "/help",
-      label: "Help Center",
+      label: "مركز المساعدة",
       icon: <FaQuestionCircle className="text-lg" />,
     },
   ];
@@ -211,7 +218,7 @@ const NavigationSidebar = ({ activeTab, setActiveTab }) => {
                     className="w-full flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-gray-800"
                   >
                     <FaSignOutAlt className="text-lg" />
-                    <span>Logout</span>
+                    <span>الخروج</span>
                   </button>
                 </li>
               </ul>
