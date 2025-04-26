@@ -605,7 +605,7 @@ const Landing = () => {
           <div className="mt-8 border-t border-gray-700 pt-8 md:flex md:items-center md:justify-between">
             <div className="flex space-x-6 md:order-2">
               <p className="text-base text-gray-400">
-                &copy; {new Date().getFullYear()} Miras Education. All rights
+                &copy; {new Date().getFullYear()} Miras, ksu University. All rights
                 reserved.
               </p>
             </div>

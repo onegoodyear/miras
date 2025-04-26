@@ -352,7 +352,8 @@ const Home = () => {
       <footer className="bg-white py-6 border-t border-gray-200">
         <div className="container mx-auto px-4 text-center text-gray-600">
           <p>
-            © {new Date().getFullYear()} Miras University. All rights reserved.
+            © {new Date().getFullYear()} Miras, ksu University. All rights
+            reserved.
           </p>
         </div>
       </footer>
