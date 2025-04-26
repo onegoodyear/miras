@@ -266,7 +266,7 @@ const Landing = () => {
         <div className="h-56 bg-secondary sm:h-72 md:h-96 lg:absolute lg:left-0 lg:h-full lg:w-1/2">
           <img
             className="w-full h-full object-cover"
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80"
+            src="/landingpage.jpg"
             alt="Students working together"
           />
         </div>
