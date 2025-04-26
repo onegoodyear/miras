@@ -1009,37 +1009,6 @@ const Quiz = () => {
           </div>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="py-6 text-center text-gray-600 text-sm bg-white">
-        <nav className="px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center bg-white shadow-sm">
-          <div className="flex items-center">
-            <MdSchool
-              className="h-8 w-8 md:h-12 md:w-12 lg:h-16 lg:w-16"
-              style={{ color: colors.primary }}
-            />
-            <span
-              className="ml-2 text-xl font-bold"
-              style={{ color: colors.primary }}
-            >
-              Miras
-            </span>
-          </div>
-          <div className="flex items-center space-x-4">
-            <img
-              src="/ksulogo.png"
-              alt="KSU Logo"
-              className="h-8 md:h-12 lg:h-16 w-auto object-contain"
-            />
-            <div className="h-16 border-l-2 border-gray-300 mx-2"></div>
-            <img
-              src="/2030vision.svg"
-              alt="2030 Vision"
-              className="h-8 md:h-12 lg:h-16 w-auto object-contain"
-            />
-          </div>
-        </nav>
-      </footer>
     </div>
   );
 };

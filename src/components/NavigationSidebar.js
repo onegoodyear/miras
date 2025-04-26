@@ -58,13 +58,13 @@ const NavigationSidebar = ({ activeTab, setActiveTab }) => {
     {
       name: "forum",
       path: "/forum",
-      label: "منتدى",
+      label: "المجتمع",
       icon: <MdForum className="text-lg" />,
     },
     {
       name: "support",
       path: "/support",
-      label: "دعم",
+      label: "الدعم",
       icon: <FaHandsHelping className="text-lg" />, // using FaHandsHelping for support
     },
     {
@@ -224,21 +224,6 @@ const NavigationSidebar = ({ activeTab, setActiveTab }) => {
               </ul>
             </div>
           </nav>
-
-          {/* User Profile */}
-          <div className="p-5 border-t border-gray-200">
-            <div className="flex items-center gap-3 bg-gray-50 p-3 rounded-lg">
-              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-secondary text-white font-bold">
-                {user.displayName.charAt(0)}
-              </div>
-              <div>
-                <p className="font-semibold text-gray-800">
-                  {user.displayName}
-                </p>
-                <p className="text-xs text-gray-500">{user.userType}</p>
-              </div>
-            </div>
-          </div>
         </div>
       </aside>
     </>

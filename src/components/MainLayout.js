@@ -30,6 +30,7 @@ const MainLayout = () => {
               🔔
               <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500"></span>
             </button>
+            <span className="mr-4 font-semibold">Khaled Elghamedi</span>
             <img
               src="https://randomuser.me/api/portraits/men/1.jpg"
               alt="Profile"

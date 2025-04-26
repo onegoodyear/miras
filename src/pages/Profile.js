@@ -62,8 +62,8 @@ const StudentProfile = () => {
   const user = {
     name: "Abdellatif Feghouli",
     studentId: "446110",
-    email: "a.feghouli@example.edu",
-    department: "Computer Science",
+    email: "446110212@student.ksu.edu.sa",
+    department: "1st Common Year",
     level: "Senior",
     joinDate: "September 2020",
   };
@@ -75,7 +75,7 @@ const StudentProfile = () => {
   // Student data
   const student = {
     name: "Abdellatif Feghouli",
-    id: "446110",
+    id: "446110212",
     year: "First Common Year",
     specialization: "Not Yet Selected",
     path: "Scientific",
