@@ -19,6 +19,10 @@ function App() {
             path="/"
             element={<Landing />}
           />
+          <Route
+            path="/login"
+            element={<Login />}
+          />
           <Route element={<MainLayout />}>
             <Route
               path="/home"
@@ -27,10 +31,6 @@ function App() {
             <Route
               path="/Ressources"
               element={<Ressources />}
-            />
-            <Route
-              path="/login"
-              element={<Login />}
             />
             <Route
               path="/subjects/:subjectId"

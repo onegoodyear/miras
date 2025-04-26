@@ -16,14 +16,21 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsLoading(true);
+    setError("");
+
     setTimeout(() => {
       setIsLoading(false);
-      navigate("/");
-    }, 1500);
+      if (studentId === "admin" && password === "admin") {
+        navigate("/home");
+      } else {
+        setError("Invalid credentials");
+      }
+    }, 1000);
   };
 
   return (
@@ -59,6 +66,11 @@ const Login = () => {
           className="space-y-5 text-white"
         >
           <div className="mb-4 flex flex-col justify-start items-start">
+            {error && (
+              <div className="mb-4 text-center text-red-300 font-medium">
+                {error}
+              </div>
+            )}
             {/* Student ID Label and Input */}
             <label className="block text-sm font-medium text-white mb-2">
               Student ID
