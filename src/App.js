@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Quiz from "./pages/Quiz";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
+import Forum from "./pages/Forum";
 import MainLayout from "./components/MainLayout";
 
 function App() {
@@ -42,6 +43,10 @@ function App() {
             <Route
               path="/profile"
               element={<Profile />}
+            />
+            <Route
+              path="/forum"
+              element={<Forum />}
             />
           </Route>
         </Routes>
