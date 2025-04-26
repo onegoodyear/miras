@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Doughnut, Bar, Line, Pie } from "react-chartjs-2";
 import { GiMoneyStack } from "react-icons/gi";
+import { motion } from "framer-motion";
 import {
   FaUserGraduate,
   FaChartLine,
@@ -57,6 +58,15 @@ ChartJS.register(
 const StudentProfile = () => {
   const [activeTab, setActiveTab] = useState("overview");
   const [loading, setLoading] = useState(true);
+
+  const user = {
+    name: "Abdellatif Feghouli",
+    studentId: "446110",
+    email: "a.feghouli@example.edu",
+    department: "Computer Science",
+    level: "Senior",
+    joinDate: "September 2020",
+  };
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
@@ -440,36 +450,54 @@ const StudentProfile = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">
-                Student Performance Dashboard
-              </h1>
-              <p className="mt-1 text-gray-600">
-                Comprehensive analysis of your academic progress and career
-                potential
+      <section className="mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="bg-white rounded-xl shadow-md p-6"
+        >
+          <h2 className="text-2xl font-bold mb-6 text-primary">
+            User Information
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+              <h3 className="text-sm font-medium text-gray-500">Full Name</h3>
+              <p className="text-lg font-semibold text-gray-800">{user.name}</p>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+              <h3 className="text-sm font-medium text-gray-500">Student ID</h3>
+              <p className="text-lg font-semibold text-gray-800">
+                {user.studentId}
               </p>
             </div>
-            <div className="mt-4 md:mt-0 flex items-center space-x-4">
-              <div className="flex items-center">
-                <div className="mr-3 text-right">
-                  <p className="text-sm text-gray-500">Logged in as</p>
-                  <p className="font-medium">{student.name}</p>
-                </div>
-                <img
-                  className="h-10 w-10 rounded-full object-cover"
-                  src={student.avatar}
-                  alt={student.name}
-                />
-              </div>
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+              <h3 className="text-sm font-medium text-gray-500">Email</h3>
+              <p className="text-lg font-semibold text-gray-800">
+                {user.email}
+              </p>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+              <h3 className="text-sm font-medium text-gray-500">Department</h3>
+              <p className="text-lg font-semibold text-gray-800">
+                {user.department}
+              </p>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+              <h3 className="text-sm font-medium text-gray-500">Level</h3>
+              <p className="text-lg font-semibold text-gray-800">
+                {user.level}
+              </p>
+            </div>
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+              <h3 className="text-sm font-medium text-gray-500">Join Date</h3>
+              <p className="text-lg font-semibold text-gray-800">
+                {user.joinDate}
+              </p>
             </div>
           </div>
-        </div>
-      </header>
-
+        </motion.div>
+      </section>
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-6 sm:px-6 lg:px-8">
         {/* Student Summary */}

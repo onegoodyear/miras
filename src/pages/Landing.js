@@ -95,7 +95,10 @@ const Landing = () => {
       <div className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
-            <h2 className="text-base text-primary font-semibold tracking-wide uppercase">
+            <h2
+              className="text-base text-secondary
+             font-semibold tracking-wide uppercase"
+            >
               Features
             </h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -111,27 +114,45 @@ const Landing = () => {
             <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 {
-                  icon: <FaBookOpen className="text-primary text-4xl" />,
+                  icon: (
+                    <FaBookOpen
+                      className="text-secondary
+                   text-4xl"
+                    />
+                  ),
                   title: "Course Materials",
                   description:
                     "Access lecture notes, slides, and reading materials for all your courses.",
                 },
                 {
-                  icon: <FaLaptopCode className="text-primary text-4xl" />,
+                  icon: (
+                    <FaLaptopCode
+                      className="text-secondary
+                   text-4xl"
+                    />
+                  ),
                   title: "Practice Exams",
                   description:
                     "Prepare with past exams and quizzes to test your knowledge.",
                 },
                 {
                   icon: (
-                    <FaChalkboardTeacher className="text-primary text-4xl" />
+                    <FaChalkboardTeacher
+                      className="text-secondary
+                     text-4xl"
+                    />
                   ),
                   title: "Expert Tutors",
                   description:
                     "Connect with experienced tutors for personalized help.",
                 },
                 {
-                  icon: <FaUserGraduate className="text-primary text-4xl" />,
+                  icon: (
+                    <FaUserGraduate
+                      className="text-secondary
+                   text-4xl"
+                    />
+                  ),
                   title: "Peer Network",
                   description:
                     "Collaborate with fellow students in study groups.",
@@ -165,7 +186,10 @@ const Landing = () => {
       <div className="py-16 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:text-center">
-            <h2 className="text-base text-primary font-semibold tracking-wide uppercase">
+            <h2
+              className="text-base text-secondary
+             font-semibold tracking-wide uppercase"
+            >
               Specializations
             </h2>
             <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
@@ -176,22 +200,42 @@ const Landing = () => {
           <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
-                icon: <MdOutlineScience className="text-primary text-4xl" />,
+                icon: (
+                  <MdOutlineScience
+                    className="text-secondary
+                 text-4xl"
+                  />
+                ),
                 title: "Natural Sciences",
                 count: "24 courses",
               },
               {
-                icon: <MdComputer className="text-primary text-4xl" />,
+                icon: (
+                  <MdComputer
+                    className="text-secondary
+                 text-4xl"
+                  />
+                ),
                 title: "Computer Science",
                 count: "18 courses",
               },
               {
-                icon: <MdEngineering className="text-primary text-4xl" />,
+                icon: (
+                  <MdEngineering
+                    className="text-secondary
+                 text-4xl"
+                  />
+                ),
                 title: "Engineering",
                 count: "32 courses",
               },
               {
-                icon: <FaMicroscope className="text-primary text-4xl" />,
+                icon: (
+                  <FaMicroscope
+                    className="text-secondary
+                 text-4xl"
+                  />
+                ),
                 title: "Health Sciences",
                 count: "15 courses",
               },
@@ -218,8 +262,8 @@ const Landing = () => {
       </div>
 
       {/* Stats Section */}
-      <div className="relative bg-primary">
-        <div className="h-56 bg-primary sm:h-72 md:h-96 lg:absolute lg:left-0 lg:h-full lg:w-1/2">
+      <div className="relative bg-secondary">
+        <div className="h-56 bg-secondary sm:h-72 md:h-96 lg:absolute lg:left-0 lg:h-full lg:w-1/2">
           <img
             className="w-full h-full object-cover"
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80"
@@ -296,7 +340,7 @@ const Landing = () => {
                 >
                   <div className="flow-root bg-gray-50 rounded-lg px-6 pb-8 h-full">
                     <div className="-mt-6">
-                      <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-white mx-auto">
+                      <div className="flex items-center justify-center h-12 w-12 rounded-md bg-secondary text-white mx-auto">
                         <FaQuoteLeft className="h-6 w-6" />
                       </div>
                       <blockquote className="mt-8">
@@ -338,7 +382,7 @@ const Landing = () => {
             <div className="inline-flex rounded-md shadow">
               <button
                 onClick={() => navigate("/register")}
-                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-[#006a9b] transition"
+                className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-secondary hover:bg-[#006a9b] transition"
               >
                 Get started
               </button>
@@ -549,7 +593,7 @@ const Landing = () => {
                   <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                     <button
                       type="submit"
-                      className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-[#006a9b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition"
+                      className="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-secondary hover:bg-[#006a9b] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition"
                     >
                       Subscribe
                     </button>

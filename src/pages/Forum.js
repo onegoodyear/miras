@@ -273,16 +273,6 @@ const ForumPage = () => {
               </span>
               <span className="font-bold">{currentUser.score}</span>
             </div>
-            <div className="flex items-center">
-              <img
-                className="h-8 w-8 rounded-full object-cover mr-2"
-                src={currentUser.avatar}
-                alt={currentUser.name}
-              />
-              <span className="hidden md:inline text-sm font-medium">
-                {currentUser.name}
-              </span>
-            </div>
           </div>
         </div>
       </header>

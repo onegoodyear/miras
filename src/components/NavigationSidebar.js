@@ -10,7 +10,7 @@ import {
   FaSignOutAlt,
   FaUserGraduate,
 } from "react-icons/fa";
-import { MdSchool } from "react-icons/md";
+import { MdSchool, MdForum } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
 
 const NavigationSidebar = ({ activeTab, setActiveTab }) => {
@@ -55,18 +55,17 @@ const NavigationSidebar = ({ activeTab, setActiveTab }) => {
       icon: <FaFileAlt className="text-lg" />,
     },
     {
-      name: "notifications",
-      path: "/notifications",
-      label: "Notifications",
-      icon: <FaBell className="text-lg" />,
-      badge: 3,
+      name: "forum",
+      path: "/forum",
+      label: "Forum",
+      icon: <MdForum className="text-lg" />,
     },
     {
       name: "profile",
       path: "/profile",
-        label: "Profile",
-        icon: <FaUserGraduate className="text-lg" />,
-    }
+      label: "Profile",
+      icon: <FaUserGraduate className="text-lg" />,
+    },
   ];
 
   const settingsItems = [
