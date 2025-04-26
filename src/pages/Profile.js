@@ -60,7 +60,7 @@ const StudentProfile = () => {
   const [loading, setLoading] = useState(true);
 
   const user = {
-    name: "Abdellatif Feghouli",
+    name: "Khaled Elghamedi",
     studentId: "446110",
     email: "446110212@student.ksu.edu.sa",
     department: "1st Common Year",
@@ -74,7 +74,7 @@ const StudentProfile = () => {
 
   // Student data
   const student = {
-    name: "Abdellatif Feghouli",
+    name: "Khaled Elghamedi",
     id: "446110212",
     year: "First Common Year",
     specialization: "Not Yet Selected",
@@ -457,39 +457,39 @@ const StudentProfile = () => {
           transition={{ duration: 0.5 }}
           className="bg-white rounded-xl shadow-md p-6"
         >
-          <h2 className="text-2xl font-bold mb-6 text-primary">
+          <h2 className="text-2xl font-bold mb-6 text-secondary">
             User Information
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-secondary">
               <h3 className="text-sm font-medium text-gray-500">Full Name</h3>
               <p className="text-lg font-semibold text-gray-800">{user.name}</p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-secondary">
               <h3 className="text-sm font-medium text-gray-500">Student ID</h3>
               <p className="text-lg font-semibold text-gray-800">
                 {user.studentId}
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-secondary">
               <h3 className="text-sm font-medium text-gray-500">Email</h3>
               <p className="text-lg font-semibold text-gray-800">
                 {user.email}
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-secondary">
               <h3 className="text-sm font-medium text-gray-500">Department</h3>
               <p className="text-lg font-semibold text-gray-800">
                 {user.department}
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-secondary">
               <h3 className="text-sm font-medium text-gray-500">Level</h3>
               <p className="text-lg font-semibold text-gray-800">
                 {user.level}
               </p>
             </div>
-            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-primary">
+            <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-secondary">
               <h3 className="text-sm font-medium text-gray-500">Join Date</h3>
               <p className="text-lg font-semibold text-gray-800">
                 {user.joinDate}
